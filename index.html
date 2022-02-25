@@ -21,6 +21,10 @@
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+  <!-- javascript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
 </head>
 
 <body>
@@ -49,6 +53,9 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#footer">Contact Us</a>
+            </li>
+            <li class="nav-item">
+              <button type="button" class="pay-button btn btn-outline-light btn-lg download-button"><i class="fa-solid fa-bag-shopping"></i> Buy Now</button><div id="status"></div>
             </li>
           </ul>
 
@@ -195,6 +202,48 @@
       <p style="color: #fff;">© Copyright 2022 BlockySlabs</p>
     </div>
   </footer>
+
+<!-- Ethereum payment code -->
+
+ <script type="text/javascript">
+   window.addEventListener('load', async () => {
+     if (window.ethereum) {
+       window.web3 = new Web3(ethereum);
+       try {
+         await ethereum.enable();
+         initPayButton()
+       } catch (err) {
+         $('#status').html('User denied account access', err)
+       }
+     } else if (window.web3) {
+       window.web3 = new Web3(web3.currentProvider)
+       initPayButton()
+     } else {
+       $('#status').html('No Metamask (or other Web3 Provider) installed')
+     }
+   })
+
+   const initPayButton = () => {
+     $('.pay-button').click(() => {
+       // paymentAddress is where funds will be send to
+       const paymentAddress = '0xcD529Ede105A869984353bb36f7BF5c1A33e5188'
+       const amountEth = 1
+
+       web3.eth.sendTransaction({
+         to: paymentAddress,
+         value: web3.toWei(amountEth, 'ether')
+       }, (err, transactionId) => {
+         if  (err) {
+           console.log('Payment failed', err)
+           $('#status').html('Payment failed')
+         } else {
+           console.log('Payment successful', transactionId)
+           $('#status').html('Payment successful')
+         }
+       })
+     })
+   }
+ </script>
 </body>
 
 </html>
