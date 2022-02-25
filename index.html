@@ -55,7 +55,10 @@
               <a class="nav-link" href="#footer">Contact Us</a>
             </li>
             <li class="nav-item">
-              <button type="button" class="pay-button btn btn-outline-light btn-lg download-button"><i class="fa-solid fa-bag-shopping"></i> Buy Now</button><div id="status"></div>
+              <button type="button" class="pay-button btn btn-outline-light btn-md download-button" id="status"><i class="fa-solid fa-bag-shopping"></i>Metamask not connected</button>
+            </li>
+            <li class="nav-item">
+            <div ></div>
             </li>
           </ul>
 
@@ -69,8 +72,12 @@
       <div class="row">
 
         <div class="col-lg-6">
-          <h1 class="big-heading">NFTS INTO THE REAL WORLD!</h1>
-          <button type="button" class="btn btn-dark btn-lg download-button"><i class="fa-solid fa-circle-question"></i> How it works</button>
+          <h1 class="big-heading">WHAT WE DO!</h1>
+          <p class="white-text">We create tangibility and utility to the NFT realm with a customized physical experience</p>
+          <h1 class="big-heading">HOW IT WORKS</h1>
+          <p class="white-text">We integrate NFC technogy thats pairs your physical and digital NFT, verifying you are the owner of both</p>
+
+          <button type="button" class="pay-button btn btn-dark btn-lg download-button"><i class="fa-solid fa-circle-question"></i> How it works</button>
           <button type="button" class="btn btn-outline-light btn-lg download-button"><i class="fa-solid fa-bag-shopping"></i> Buy Now</button>
         </div>
         <div class="col-lg-6">
@@ -89,20 +96,26 @@
 
       <div class="row">
         <div class="feature-left col-lg-3">
-          <h3 class="feature-title">HOW IT WORKS</h3>
-          <p>We bring your unique NFTs into the real world with a one of a kind, high quality physical collectible to display, trade or sell.</p>
-          <p>We verify you as the owner of the NFT you want slabbed</p>
-          <p>Then turn your NFT into a 1/1 physical collectible full of personalised traits and information</p>
+
+          <h3 class="feature-title">CREATE</h3>
+          <p>Customize your physical NFT experience with different options and then submit the order form
+</p>
+          <h3 class="feature-title">PAY</h3>
+          <p>Send the required payment to "insert address here" from the SAME WALLET ADDRESS that holds the NFT you ant built</p>
+
+
         </div>
-        <div class="feature-left col-lg-9">
+        <div class="feature-left col align-self-center">
+
           <img class="feature-image-l" src="images/Group-1681-1.png" alt="">
           <img class="feature-image-r" src="images/Group-1671.png" alt="">
         </div>
 
-        <div class="feature-left col-lg-3">
-
-
-
+          <div class="feature-left col-lg-3">
+          <h3 class="feature-title">VERIFY</h3>
+          <p>After payment is recieved we will verify you are the digital NFT owner before building your customized NFT</p>
+          <h3 class="feature-title">BUILD/SHIP</h3>
+          <p>We turn your NFT into a 1/1 physical collectible and ship it to you, wherever you are in the world</p>
 
         </div>
 
@@ -126,11 +139,10 @@
               <img class="details-image" src="images/rich-in-detail.png" alt="rich-in-detail">
             </div>
             <div class="details-info col-lg-6">
-              <h1 class="carousel-quote">COMMITTED TO QUALITY</h1>
-              <h2 class="details-text">RICH IN DETAIL INCLUDING TRAITS</h2>
+              <h1 class="carousel-quote">WHAT DO I GET?</h1>
+              <h2 class="details-text">BEST OF THE BEST</h2>
               <p class="details-smltext">
-                We use the highest quality 420gsm cardstock and customise every back side of your NFT card. Just like the front, no back is the same. We include the NFT collection number, a 1 of 1 verification, and even the NFT's traits. All to
-                further bring to life your unique collectible.
+                We print on a durable plastic that is superior to traditional paper trading card material and lasts much longer. Additionally, our NFC technology is secure and tamper proof.
               </p>
             </div>
           </div>
@@ -143,10 +155,10 @@
               </div>
               <div class="details-info col-lg-6">
                 <h1 class="carousel-quote">COMMITTED TO QUALITY</h1>
-                <h2 class="details-text">PRINT THAT POPS</h2>
+                <h2 class="details-text">WHAT NFTS CAN I BUILD? </h2>
                 <p class="details-smltext">
-                  We use the highest quality card slabs (card cases) as well to ensure your finshed product is forever protected. We also choose the highest quality card stock and print tech available to ensure your original NFT artwork pops when
-                  displayed.
+                  Right now we are only builsing NFTs for ETH and BNB but can accomodate spevial requests for an additional fee.
+
                 </p>
               </div>
             </div>
@@ -195,6 +207,10 @@
 
   <footer class="white-section" id="footer">
     <div class="container-fluid">
+      <div>
+        <h1 class="white-text">DISCLAIMER </h1>
+        <p class="white-text">You can build any NFT where you’re granted some non-exclusive IP rights/ownership. So best to check with the project owners or artist if unsure. We 100% respect people’s ownership and won’t knowingly slab a project we know hasn’t granted you rights.</p>
+      </div>
       <i class="social-icon fab fa-facebook-f"></i>
       <i class="social-icon fab fa-twitter"></i>
       <i class="social-icon fab fa-instagram"></i>
@@ -212,6 +228,7 @@
        try {
          await ethereum.enable();
          initPayButton()
+         $('#status').html('Metamask connected')
        } catch (err) {
          $('#status').html('User denied account access', err)
        }

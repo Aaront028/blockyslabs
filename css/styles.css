@@ -11,6 +11,9 @@ h2, h3, h4, h5, h6 {
 p {
   color: #8f8f8f;
 }
+.white-text {
+  color: #fff;
+}
 
 /* Headings */
 
@@ -85,7 +88,7 @@ p {
 /* Title Image */
 
 .title-image {
-  width: 30%;
+  width: 50%;
   transform: rotate(-25deg);
   position: absolute;
   right: 30%;
@@ -188,6 +191,7 @@ p {
 }
 
 .social-icon {
+  color: #fff;
   margin: 20px 10px;
 }
 
